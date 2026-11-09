@@ -113,16 +113,16 @@
 
     article {
       margin: 0px auto;
-      padding: 25px 50px 50px;
+      padding: 25px 50px 25px;
       max-width: 1200px;
     }
 
-    /* HEADER ICOON IN HET ARTIKEL MET AANGEPASTE AFSTANDEN */
+    /* HEADER ICOON IN HET ARTIKEL (ZWART, SPACING: 50px BOVEN, 8px ONDER) */
     .article-main-icon {
       width: 150px;
       height: auto;
-      margin-top: 50px; /* Verhoogde afstand tot de header-banner */
-      margin-bottom: 8px; /* Verlaagde afstand tot de titel */
+      margin-top: 50px;
+      margin-bottom: 8px;
       display: block;
     }
 
@@ -137,7 +137,7 @@
       border: none;
       border-top: 1px dashed #999;
       background-color: transparent;
-      margin: 30px 0;
+      margin: 25px 0;
     }
 
     a, a:visited {
@@ -156,30 +156,31 @@
 
     p {
       line-height: 1.6;
-      margin-bottom: 14px;
+      margin-bottom: 10px;
     }
 
+    /* OORSPRONKELIJKE STYLING VOOR H1 */
     h1 {
-      font-size: 2.6em;
-      font-weight: 600;
-      padding-bottom: 16px;
-      color: #222;
+      font-size: 3em;
+      font-weight: 400;
+      padding-bottom: 20px;
     }
 
+    /* SLUIT AAN BIJ DE OORSPRONKELIJKE STYLING VOOR SUBTITELS */
     h2 {
-      font-size: 1.6em;
-      font-weight: 600;
-      margin-bottom: 16px;
-      color: #333;
+      font-size: 1.8em;
+      font-weight: 400;
+      margin-top: 25px;
+      margin-bottom: 15px;
     }
 
     /* FAQ ACCORDION STYLING */
     .faq-container {
-      margin-top: 30px;
+      margin-top: 25px;
     }
 
     .faq-item {
-      border: 1.5px solid #e0e0e0;
+      border: 1.5px solid #333333;
       border-radius: 8px;
       background-color: #ffffff;
       margin-bottom: 12px;
@@ -194,19 +195,19 @@
     .faq-question {
       padding: 16px 20px;
       font-weight: 600;
-      font-size: 1.05em;
+      font-size: 1em;
       cursor: pointer;
       display: flex;
       justify-content: space-between;
       align-items: center;
       user-select: none;
       background-color: #ffffff;
-      color: #222222;
+      color: #000000;
     }
 
     .faq-question::after {
       content: '+';
-      font-size: 1.3em;
+      font-size: 1.2em;
       font-weight: bold;
       color: var(--BA-roze);
       transition: transform 0.2s ease;
@@ -228,13 +229,12 @@
     .faq-item.open .faq-answer {
       max-height: 300px;
       padding: 16px 20px;
-      border-top: 1px dashed #e0e0e0;
+      border-top: 1px dashed #999999;
     }
 
     .faq-answer p {
       margin-bottom: 0;
       font-size: 0.95em;
-      color: #444;
     }
 
     /* ANIMATIE */
