@@ -315,7 +315,7 @@
 
     <hr />
 
-    <!-- FAQ SECTION MET 3 AANKLIKBARE PLACEHOLDERS -->
+    
     <div class="faq-container">
       <h2>Informatie voor gebruikers</h2>
 
@@ -326,8 +326,7 @@
         </div>
       </div>
 
-      <!-- BOOKMARK HIER -->
-            <div class="faq-item" id="uitschakelen">
+      <div class="faq-item" id="uitschakelen">
               <div class="faq-question" onclick="toggleFaq(this)">Ik gebruik de extensie niet! Hoe schakel ik ze uit?</div>
               <div class="faq-answer">
                 <p>Wil je het zwevende venster tijdelijk of permanent niet zien tijdens het werken in Smartschool Skore? Je hebt hiervoor verschillende opties.</p>
@@ -335,7 +334,7 @@
                 <p><strong>Optie B: het venster wegklikken.</strong><br>Klik op het kruisje (x) in de titelbalk van het zwevende venster. De volgende keer dat je de Skore module bezoekt staat het zwevend venster er opnieuw.</p>
                 <p><strong>Optie C: de extensie volledig uitschakelen in Chrome.</strong><br>Ga naar <a href="chrome://extensions/" target="_top">chrome://extensions/</a>. Zoek de extensie <strong>Classroom to Skore</strong> in de lijst. Zet de schuifschakelaar bij de extensie op Uit (grijs).</p>
               </div>
-            </div>
+      </div>
 
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">Wat moet ik doen als mijn opdrachten niet laden of er een foutmelding verschijnt?</div>
@@ -357,8 +356,6 @@
           <p>Klik in het overzicht op een specifieke opdracht en kies onderaan voor 'Herrekenen naar nieuw maximum'. Vul het gewenste totaal in en alle punten worden automatisch herrekend en afgerond op een half punt.</p>
         </div>
       </div>
-
-
     </div>
   </article>
 
@@ -388,5 +385,31 @@
       }
     });
   </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1. Controleer of de URL de hash #uitschakelen bevat
+      if (window.location.hash === "#uitschakelen") {
+        const targetItem = document.getElementById("uitschakelen");
+
+        if (targetItem) {
+          const question = targetItem.querySelector(".faq-question");
+
+          // 2. Openklappen via je bestaande toggleFaq functie
+          if (question && typeof toggleFaq === "function") {
+            toggleFaq(question);
+          }
+
+          // 3. Pas de titelkleur aan naar #c50650
+          if (question) {
+            question.style.color = "#c50650";
+          }
+
+          // 4. Optioneel: scroll het element vloeiend in beeld
+          targetItem.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    });
+  </script>
+
 </body>
 </html>
