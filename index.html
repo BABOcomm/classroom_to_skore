@@ -292,7 +292,7 @@
   </nav>
 
   <article>
-    <!-- FULL FLOW ICON BOVEN DE H1 (ZWART EN MET AANGEPASTE SPACING) -->
+    <!-- FULL FLOW ICON BOVEN DE H1 -->
     <div class="article-main-icon">
       <svg viewBox="-418 -12 626 210" version="1.1" xmlns="http://www.w3.org/2000/svg">
         <g fill="#000000">
@@ -306,43 +306,59 @@
     <h1>Classroom to Skore - Chrome Extensie</h1>
 
     <p>
-      Deze Chrome-extensie werd centraal geïnstalleerd door de beheerder van <strong>Google for Education</strong> op onze school. Je hoeft zelf niets te installeren of in te stellen; de tool staat automatisch klaar op jouw schoolaccount.
+      Classroom to Skore is een Chrome extensie die is ontworpen voor leerkrachten. Ze helpt je om overzichten en behaalde cijfers in Google Classroom snel en overzichtelijk bij de hand te hebben terwijl je in Skore werkt.
     </p>
-
     <p>
-      De extensie is bewust uitsluitend actief wanneer je werkt binnen de <strong>Skore-module van Smartschool</strong>. Op alle andere websites of modules blijft de tool volledig inactief op de achtergrond.
+      Zodra je Skore opent, verschijnt er een zwevend paneel. Hiermee roep je alle opdrachten van het huidige schooljaar en de bijbehorende resultaten op uit jouw klassen in <strong>Google Classroom</strong>. Je ziet in één oogopslag welke opdrachten zijn ingeleverd, toegewezen of beoordeeld. Daarnaast kun je opdrachttitels met één klik kopiëren en behaalde cijfers eenvoudig herrekenen naar een nieuw maximum.
     </p>
-
-    <p>
-      Zodra je Skore opent, verschijnt er een discreet zwevend paneel. Hiermee roep je direct alle opdrachten en bijbehorende resultaten op uit jouw <strong>Google Classroom</strong>-vakken van het huidige schooljaar. Je ziet in één oogopslag welke taken zijn ingeleverd, toegewezen of beoordeeld. Daarnaast kun je opdrachttitels en datums met één klik kopiëren en behaalde cijfers eenvoudig herrekenen naar een nieuw maximum.
-    </p>
+    <p><strong>Deze extensie kan NIET in jouw Skore puntenboek schrijven.</strong></p>
 
     <hr />
 
     <!-- FAQ SECTION MET 3 AANKLIKBARE PLACEHOLDERS -->
     <div class="faq-container">
-      <h2>Veelgestelde vragen (FAQ)</h2>
+      <h2>Informatie voor gebruikers</h2>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">Waarom zie ik deze extensie?</div>
+        <div class="faq-answer">
+          <p>Deze Chrome extensie werd centraal geïnstalleerd door de beheerder van Google for Education van jouw school.</p>
+        </div>
+      </div>
+
+      <!-- BOOKMARK HIER -->
+            <div class="faq-item" id="uitschakelen">
+              <div class="faq-question" onclick="toggleFaq(this)">Ik gebruik de extensie niet! Hoe schakel ik ze uit?</div>
+              <div class="faq-answer">
+                <p>Wil je het zwevende venster tijdelijk of permanent niet zien tijdens het werken in Smartschool Skore? Je hebt hiervoor verschillende opties.</p>
+                <p><strong>Optie A: het venster inklappen.</strong><br>Klik op het min-teken (−) in de titelbalk van het zwevende venster. verplaats nu het ingeklapte venster zodat het niet meer in de weg zit.</p>
+                <p><strong>Optie B: het venster wegklikken.</strong><br>Klik op het kruisje (x) in de titelbalk van het zwevende venster. De volgende keer dat je de Skore module bezoekt staat het zwevend venster er opnieuw.</p>
+                <p><strong>Optie C: de extensie volledig uitschakelen in Chrome.</strong><br>Ga naar <a href="chrome://extensions/" target="_top">chrome://extensions/</a>. Zoek de extensie <strong>Classroom to Skore</strong> in de lijst. Zet de schuifschakelaar bij de extensie op Uit (grijs).</p>
+              </div>
+            </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">Wat moet ik doen als mijn opdrachten niet laden of er een foutmelding verschijnt?</div>
+        <div class="faq-answer">
+          <p>Controleer of je ingelogd bent met je Google-schoolaccount in de Chrome browser. Vernieuw het tabblad waarin Skore zich bevindt en klik opnieuw op 'START' om een nieuwe verbinding te maken. Vraag eventueel aan de Google beheerder van de school om te controleren of je deze extensie bij je eerste gebruik de nodige authorisaties hebt gegeven.</p>
+        </div>
+      </div>
 
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">Waarom zie ik de extensie niet als ik op een andere pagina in Smartschool ben?</div>
         <div class="faq-answer">
-          <p>De extensie is specifiek zo ingesteld dat hij enkel geladen wordt op het webadres van de Skore-module. Hierdoor blijft je browser snel en overzichtelijk op andere pagina's.</p>
+          <p>De extensie is  zo ingesteld dat hij enkel geladen wordt op het webadres van de Skore-module. Op alle andere websites of modules blijft de tool volledig inactief op de achtergrond.</p>
         </div>
       </div>
 
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">Hoe herreken ik een cijfer naar een ander maximum?</div>
         <div class="faq-answer">
-          <p>Klik in het overzicht op een specifieke opdracht en kies onderaan voor 'Herrekenen naar nieuw maximum'. Vul het gewenste totaal in (bijv. 10 of 20) en alle punten worden automatisch afgerond op een half punt.</p>
+          <p>Klik in het overzicht op een specifieke opdracht en kies onderaan voor 'Herrekenen naar nieuw maximum'. Vul het gewenste totaal in en alle punten worden automatisch herrekend en afgerond op een half punt.</p>
         </div>
       </div>
 
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">Wat moet ik doen als mijn opdrachten niet laden of er een foutmelding verschijnt?</div>
-        <div class="faq-answer">
-          <p>Controleer of je ingelogd bent met je Google-schoolaccount in de browser. Sluit eventueel het zwevende venster en klik opnieuw op 'START' om een nieuwe verbinding te maken.</p>
-        </div>
-      </div>
+
     </div>
   </article>
 
