@@ -270,6 +270,125 @@
         transform: translateX(0);
       }
     }
+
+#beheerders-sectie {
+  margin-top: 40px;
+  padding-top: 10px;
+  border-top: 1px dashed #999;
+}
+
+#beheerders-sectie .faq-item.open .faq-answer {
+  max-height: 5000px;
+}
+
+#beheerders-sectie .faq-answer p {
+  margin-bottom: 14px;
+}
+
+#beheerders-sectie .faq-answer p:last-child {
+  margin-bottom: 0;
+}
+
+/* INLINE CODE STYLING */
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.88em;
+  background-color: #eeeeee;
+  color: #222222;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  padding: 1px 6px;
+}
+
+/* INTRODUCTIE MET SCREENSHOT NAAST DE TEKST */
+.intro-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.intro-text {
+  flex: 1 1 50%;
+  min-width: 0;
+}
+
+.intro-image {
+  flex: 0 1 50%;
+  max-width: 50%;
+}
+
+.intro-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.20));
+  cursor: zoom-in;
+}
+
+
+
+/* OVERLAY VOOR VERGROTE SCREENSHOT */
+.screenshot-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+  box-sizing: border-box;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease-in-out;
+  cursor: zoom-out;
+}
+
+.screenshot-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.screenshot-overlay img {
+  max-width: 92vw;
+  max-height: 92vh;
+  width: auto;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* CENTRALE DOWNLOADKNOP IN HANDLEIDING */
+.download-btn-wrapper {
+  text-align: center;
+  margin: 18px 0;
+}
+
+a.download-btn,
+a.download-btn:visited {
+  display: inline-block;
+  padding: 12px 22px;
+  font-size: 0.95em;
+  font-weight: 600;
+  color: #000000;
+  background-color: #ffffff;
+  border: 1.5px solid #333333;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+a.download-btn:hover {
+  border-color: var(--BA-roze);
+  color: var(--BA-roze);
+  text-decoration: none;
+}
+
   </style>
 </head>
 
@@ -285,6 +404,7 @@
     <div class="backdrop" onclick="closePanel()"></div>
     <div class="panel">
       <div class="panel-content">
+        <p>De <em>Classroom to Skore</em> Chrome extensie is <a href="https://github.com/babocomm/classroom_to_skore" target="_blank">gehost bij GitHub</a>.</p>
         <p>Vragen over deze Chrome extensie?</p>
         <p>Stuur een e-mail naar <a href="mailto:dirk.ploegaerts@babotaniek.be">dirk.ploegaerts@babotaniek.be</a></p>
       </div>
@@ -305,61 +425,191 @@
 
     <h1>Classroom to Skore - Chrome Extensie</h1>
 
+    <div class="intro-container">
+  <div class="intro-text">
     <p>
       Classroom to Skore is een Chrome extensie die is ontworpen voor leerkrachten. Ze helpt je om overzichten en behaalde cijfers in Google Classroom snel en overzichtelijk bij de hand te hebben terwijl je in Skore werkt.
     </p>
     <p>
-      Zodra je Skore opent, verschijnt er een zwevend paneel. Hiermee roep je alle opdrachten van het huidige schooljaar en de bijbehorende resultaten op uit jouw klassen in <strong>Google Classroom</strong>. Je ziet in één oogopslag welke opdrachten zijn ingeleverd, toegewezen of beoordeeld. Daarnaast kun je opdrachttitels met één klik kopiëren en behaalde cijfers eenvoudig herrekenen naar een nieuw maximum.
+      Zodra je Skore opent, verschijnt er een zwevend paneel. Hiermee vraag je alle opdrachten op van het huidige schooljaar uit jouw klassen in <strong>Google Classroom</strong>. Als je op een opdracht klikt, zie je de bijbehorende resultaten. Je kan de titel van een opdracht met één klik kopiëren en de behaalde cijfers eenvoudig herrekenen naar een nieuw maximum.
     </p>
     <p><strong>Deze extensie kan NIET in jouw Skore puntenboek schrijven.</strong></p>
+  </div>
 
+  <div class="intro-image">
+    <img src="screenshot.png" alt="Voorbeeld van het zwevende Classroom to Skore paneel in Skore" onclick="openScreenshotOverlay(this.src)" title="Klik om te vergroten">
+  </div>
+</div>
     <hr />
 
-    
-    <div class="faq-container">
-      <h2>Informatie voor gebruikers</h2>
+    <section class="faq-container">
+          <h2>Informatie voor gebruikers</h2>
 
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">Waarom zie ik deze extensie?</div>
-        <div class="faq-answer">
-          <p>Deze Chrome extensie werd centraal geïnstalleerd door de beheerder van Google for Education van jouw school.</p>
-        </div>
-      </div>
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">Waarom zie ik deze extensie?</div>
+            <div class="faq-answer">
+              <p>Deze Chrome extensie werd centraal geïnstalleerd door de beheerder van Google for Education van jouw school.</p>
+            </div>
+          </div>
 
-      <div class="faq-item" id="uitschakelen">
-              <div class="faq-question" onclick="toggleFaq(this)">Ik gebruik de extensie niet! Hoe schakel ik ze uit?</div>
-              <div class="faq-answer">
-                <p>Wil je het zwevende venster tijdelijk of permanent niet zien tijdens het werken in Smartschool Skore? Je hebt hiervoor verschillende opties.</p>
-                <p><strong>Optie A: het venster inklappen.</strong><br>Klik op het min-teken (−) in de titelbalk van het zwevende venster. verplaats nu het ingeklapte venster zodat het niet meer in de weg zit.</p>
-                <p><strong>Optie B: het venster wegklikken.</strong><br>Klik op het kruisje (x) in de titelbalk van het zwevende venster. De volgende keer dat je de Skore module bezoekt staat het zwevend venster er opnieuw.</p>
-                <p><strong>Optie C: de extensie volledig uitschakelen in Chrome.</strong><br>Ga naar <a href="chrome://extensions/" target="_top">chrome://extensions/</a>. Zoek de extensie <strong>Classroom to Skore</strong> in de lijst. Zet de schuifschakelaar bij de extensie op Uit (grijs).</p>
-              </div>
-      </div>
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">Wat moet ik doen als Google bij het eerste gebruik om toestemming vraagt?</div>
+            <div class="faq-answer">
+              <p>Wanneer je de extensie voor de eerste keer gebruikt en op <strong>START</strong> klikt, opent een venster van Google met de vraag of <em>Classroom to Skore</em> je klassen, opdrachten en cijfers mag bekijken. Klik op <strong>Toestaan</strong> (of <em>Doorgaan</em>) met je schoolaccount. Deze toestemming is veilig, door je schoolbeheerder goedgekeurd en hoef je normaal gezien maar één keer te geven.</p>
+            </div>
+          </div>
 
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">Wat moet ik doen als mijn opdrachten niet laden of er een foutmelding verschijnt?</div>
-        <div class="faq-answer">
-          <p>Controleer of je ingelogd bent met je Google-schoolaccount in de Chrome browser. Vernieuw het tabblad waarin Skore zich bevindt en klik opnieuw op 'START' om een nieuwe verbinding te maken. Vraag eventueel aan de Google beheerder van de school om te controleren of je deze extensie bij je eerste gebruik de nodige authorisaties hebt gegeven.</p>
-        </div>
-      </div>
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">Waarom zie ik de extensie niet als ik op een andere pagina in Smartschool ben?</div>
+            <div class="faq-answer">
+              <p>De extensie is zo ingesteld dat hij enkel geladen wordt op het webadres van de Skore-module. Op alle andere websites of modules blijft de tool volledig inactief op de achtergrond.</p>
+            </div>
+          </div>
 
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">Waarom zie ik de extensie niet als ik op een andere pagina in Smartschool ben?</div>
-        <div class="faq-answer">
-          <p>De extensie is  zo ingesteld dat hij enkel geladen wordt op het webadres van de Skore-module. Op alle andere websites of modules blijft de tool volledig inactief op de achtergrond.</p>
-        </div>
-      </div>
+          <div class="faq-item" id="uitschakelen">
+            <div class="faq-question" onclick="toggleFaq(this)">Ik gebruik de extensie niet! Hoe schakel ik ze uit?</div>
+            <div class="faq-answer">
+              <p>Wil je het zwevende venster tijdelijk of permanent niet zien tijdens het werken in Smartschool Skore? Je hebt hiervoor verschillende opties.</p>
+              <p><strong>Optie A: het venster inklappen.</strong><br>Klik op het min-teken (−) in de titelbalk van het zwevende venster. Verplaats nu het ingeklapte venster zodat het niet meer in de weg zit.</p>
+              <p><strong>Optie B: het venster wegklikken.</strong><br>Klik op het kruisje (x) in de titelbalk van het zwevende venster. De volgende keer dat je de Skore module bezoekt staat het zwevend venster er opnieuw.</p>
+              <p><strong>Optie C: de extensie volledig uitschakelen in Chrome.</strong><br>Ga in een nieuw tabblad naar <i>chrome://extensions</i><button type="button" onclick="copyChromeUrl(this)" style="cursor:pointer; border:1px solid #333; background:#fff; border-radius:4px; padding:2px 8px; font-size:0.85em; margin-left:4px;">Kopieer link</button> of klik op het puzzelstukje naast de adresbalk en kies <i>Manage Extensions</i>. Zoek de extensie <strong>Classroom to Skore</strong> in de lijst. Zet de schuifschakelaar bij de extensie op Uit (grijs). De extensie is dan gedeactiveerd.</p>
+            </div>
+          </div>
 
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">Hoe herreken ik een cijfer naar een ander maximum?</div>
-        <div class="faq-answer">
-          <p>Klik in het overzicht op een specifieke opdracht en kies onderaan voor 'Herrekenen naar nieuw maximum'. Vul het gewenste totaal in en alle punten worden automatisch herrekend en afgerond op een half punt.</p>
-        </div>
-      </div>
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">Het zwevende venster staat voor mijn puntenlijst in Skore. Kan ik het verplaatsen?</div>
+            <div class="faq-answer">
+              <p><strong>Ja.</strong> Klik op de bovenste titelbalk van het zwevende venster, houd je muisknop ingedrukt en sleep het paneel naar een vrije plek op je scherm. Je kunt het venster zowel in uitgeklapte als in ingeklapte vorm verplaatsen.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">Hoe vind ik snel de juiste klas of opdracht terug?</div>
+            <div class="faq-answer">
+              <p>Bovenaan het overzicht kun je filteren op een specifieke <strong>Google Classroom-klas</strong> zodat je enkel de opdrachten van die klas ziet. Daarnaast kun je de lijst sorteren op <strong>datum</strong> om recente opdrachten meteen bovenaan te plaatsen.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">Wat betekenen de gekleurde bolletjes naast een opdracht?</div>
+            <div class="faq-answer">
+              <p>De bolletjes geven de status van de inleverdatum aan.</p>
+              <p>
+                <span style="display:inline-block; width:12px; height:12px; border-radius:50%; background-color:#86BC25; vertical-align:middle; margin: 0 4px 2px 2px;"></span> De inleverdatum ligt in het verleden.<br>
+                <span style="display:inline-block; width:12px; height:12px; border-radius:50%; background-color:#D93025; vertical-align:middle; margin: 0 4px 2px 2px;"></span> De inleverdatum is vandaag of ligt in de toekomst.<br>
+                <span style="display:inline-block; width:10px; height:10px; border-radius:50%; border:2px solid #666666; background-color:transparent; vertical-align:middle; margin: 0 4px 2px 2px;"></span> Er is geen inleverdatum ingesteld in Google Classroom.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">Hoe werkt het kopiëren van opdrachttitels en datums?</div>
+            <div class="faq-answer">
+              <p>
+                In het detailscherm van een opdracht staat naast de titel en de datum een kopieer-icoontje
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin: 0 2px 2px 2px;"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>.
+                Klik hierop om de tekst meteen naar je klembord te kopiëren. Een groen vinkje
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#86BC25" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin: 0 2px 2px 2px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                geeft aan dat het kopiëren gelukt is.
+              </p>
+              <p>Datums worden automatisch gekopieerd in het standaard <strong>YYYY-MM-DD</strong> formaat (bijv. 24 maart 2026 wordt <code>2026-03-24</code>).</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">Waarom zijn sommige punten grijs?</div>
+            <div class="faq-answer">
+              <p>In Classroom staan ook cijfers die nog niet definitief zijn omdat je de opdracht nog niet formeel hebt "teruggegeven". De extensie toont zowel <strong>conceptcijfers</strong> als <strong>definitieve cijfers</strong>. Er wordt in de lijst aangegeven of een cijfer nog in concept staat.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">Hoe herreken ik een cijfer naar een ander maximum?</div>
+            <div class="faq-answer">
+              <p>Klik in het overzicht op een specifieke opdracht en kies onderaan voor 'Herrekenen naar nieuw maximum'. Vul het gewenste totaal in en alle punten worden automatisch herrekend en afgerond op een half punt.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">Wat moet ik doen als mijn opdrachten niet laden of er een foutmelding verschijnt?</div>
+            <div class="faq-answer">
+              <p>Controleer of je ingelogd bent met je Google-schoolaccount in de Chrome browser. Vernieuw het tabblad waarin Skore zich bevindt en klik opnieuw op 'START' om een nieuwe verbinding te maken. Vraag eventueel aan de Google beheerder van de school om te controleren of je deze extensie bij je eerste gebruik de nodige autorisaties hebt gegeven.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">Worden de cijfers of leerlinggegevens ergens opgeslagen?</div>
+            <div class="faq-answer">
+              <p><strong>Nee.</strong> De extensie slaat geen gegevens of cijfers op een externe server op. De gegevens worden rechtstreeks en beveiligd via je browser opgehaald uit jouw Google Classroom en enkel getoond in het venster zolang je op de pagina bent.</p>
+            </div>
+          </div>
+
+        </section>
+
+    <section id="beheerders-sectie">
+  <h2>Hoe installeer ik deze extensie?</h2>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleFaq(this)">Ik ben een Google beheerder (admin) op mijn school.</div>
+    <div class="faq-answer">
+      <p><strong>Stap 1 - De bestanden van de extensie downloaden</strong><br>
+Haal het installatiepakket rechtstreeks bij GitHub op via onderstaande knop.</p>
+
+<div class="download-btn-wrapper">
+  <a href="classroom-to-skore-chrome-extension.zip" download class="download-btn">DOWNLOAD classroom-to-skore-chrome-extension.zip</a>
+</div>
+
+<p>Open je map <em>Downloads</em> en pak het ZIP-bestand uit naar een gewone map op je computer. In deze map vind je onder andere het configuratiebestand <code>manifest.json</code>.</p>
+
+      <p><strong>Stap 2 - De organisatie-eenheid (OE) voor leerkrachten controleren</strong><br>Log in op de Google Beheerdersconsole via <code>admin.google.com</code> en ga in het linkermenu naar <strong>Directory &gt; Organisatie-eenheden</strong>. Controleer of er al een aparte organisatie-eenheid bestaat voor het onderwijzend personeel (bijvoorbeeld <em>Leerkrachten</em> of <em>Personeel</em>) waarin geen leerlingen zitten. Bestaat die nog niet, klik dan linksboven op het gele plusje (<strong>Organisatie-eenheid maken</strong>) en plaats alle leerkrachtenaccounts in deze eenheid.</p>
+
+      <p><strong>Stap 3 - De Extensie-ID ophalen via het Chrome Web Store Developer Dashboard</strong><br>
+Om de extensie centraal te kunnen uitrollen en te koppelen aan Google Classroom, heb je de unieke <strong>Extensie-ID</strong> (32 kleine letters) nodig. Ga met een algemeen ICT-beheerdersaccount van de school naar het <strong>Chrome Web Store Developer Dashboard</strong> (<code>chrome.google.com/webstore/devconsole</code>). Gebruik je dit dashboard voor het eerst, accepteer dan op de accountpagina enkel de voorwaarden (voor privé-extensies binnen een Google Workspace for Education-domein is registratie <strong>gratis</strong>; je hoeft de eenmalige vergoeding van $5 dus niet te betalen). Klik daarna op <strong>Nieuw item</strong>, upload het oorspronkelijke ZIP-bestand uit Stap 1 en klik rechtsboven op <strong>Concept opslaan</strong> (<em>Save draft</em>). Bovenaan de pagina verschijnt nu de vaste <strong>Item-ID / Extensie-ID</strong>. Kopieer en bewaar deze code zorgvuldig; je hebt ze in Stap 6 nodig.</p>
+
+      <p><strong>Stap 4 - Een Google Cloud-project aanmaken en de Classroom API inschakelen</strong><br>
+      Ga naar de Google Cloud Console via <code>console.cloud.google.com</code> en log in met je Google Workspace-beheerdersaccount. Klik bovenaan op de projectkiezer en kies voor <strong>Nieuw project</strong>. Geef het project een naam (bijvoorbeeld <em>Classroom to Skore</em>) en klik op <strong>Maken</strong>. Zorg dat het nieuwe project geselecteerd is, ga in het linkermenu naar <strong>API's en services &gt; Bibliotheek</strong>, zoek naar <strong>Google Classroom API</strong> en klik op <strong>Inschakelen</strong>.</p>
+
+      <p><strong>Stap 5 - Het OAuth-toestemmingsscherm instellen</strong><br>
+Ga in hetzelfde Google Cloud-project naar <strong>API's en services &gt; OAuth-toestemmingsscherm</strong> (of <em>Google Auth Platform</em>). Kies bij gebruikerstype voor <strong>Intern</strong> (zodat enkel gebruikers binnen jouw schooldomein de extensie kunnen gebruiken) en klik op <strong>Maken</strong>. Vul bij app-naam <em>Classroom to Skore</em> in, selecteer je eigen e-mailadres als contactpersoon en sla op. Voeg bij <em>Scopes</em> de leesrechten voor Google Classroom toe (de exacte namen vind je in <code>manifest.json</code> onder <code>"scopes"</code>) en voltooi het scherm.</p>
+
+      <p><strong>Stap 6 - De OAuth Client-ID aanmaken met de Extensie-ID</strong><br>
+      Ga in het linkermenu naar <strong>API's en services &gt; Inloggegevens</strong>. Klik bovenaan op <strong>+ Inloggegevens maken</strong> en kies voor <strong>OAuth-client-ID</strong>. Selecteer bij <em>Toepassingstype</em> de optie <strong>Chrome-extensie</strong>. Plak in het veld <strong>Item-ID</strong> de 32-tekens lange <strong>Extensie-ID</strong> die je in Stap 3 hebt gekopieerd en klik op <strong>Maken</strong>. Er verschijnt nu een scherm met jouw unieke <strong>Client-ID</strong> (een code die eindigt op <code>.apps.googleusercontent.com</code>). Kopieer deze Client-ID.</p>
+
+      <p><strong>Stap 7 - De Client-ID invullen in manifest.json en de extensie privé publiceren</strong><br>
+Open het bestand <code>manifest.json</code> uit je uitgepakte map van Stap 1 met een teksteditor. Zoek het onderdeel <code>"oauth2"</code>, plak de gekopieerde <strong>Client-ID</strong> uit Stap 6 tussen de aanhalingstekens achter <code>"client_id":</code> en sla het bestand op. Open daarna de uitgepakte map, selecteer <strong>alle bestanden binnenin die map</strong> (niet de bovenliggende map zelf, anders staat <code>manifest.json</code> niet in de hoofdmap van het archief) en comprimeer ze naar een nieuw ZIP-bestand. Ga terug naar je concept in het <strong>Chrome Web Store Developer Dashboard</strong>, upload dit nieuwe pakket onder <strong>Pakket &gt; Nieuw pakket uploaden</strong>, vul de verplichte velden bij <strong>Storevermelding</strong> en <strong>Privacypraktijken</strong> in, zet onder <strong>Distributie</strong> de zichtbaarheid op <strong>Privé</strong> (alleen voor jouw schooldomein) en klik op <strong>Publiceren</strong>.</p>
+
+      <p><strong>Stap 8 - API-toegang vertrouwen in de Google Beheerdersconsole</strong><br>
+      Ga terug naar <code>admin.google.com</code> en open <strong>Beveiliging &gt; Toegangs- en gegevensbeheer &gt; API-beheer</strong>. Klik op <strong>App-toegang beheren</strong> en kies voor <strong>Nieuwe app configureren</strong>. Plak de <strong>OAuth Client-ID</strong> uit Stap 6 in het zoekveld, selecteer de app en stel de toegang in op <strong>Vertrouwd</strong> (<em>Trusted</em>). Zo voorkom je dat leerkrachten een beveiligingsfout krijgen wanneer de extensie hun Google Classroom-cijfers ophaalt.</p>
+
+      <p><strong>Stap 9 - De extensie uitrollen voor de organisatie-eenheid Leerkrachten</strong><br>
+Ga in de Google Beheerdersconsole naar <strong>Apparaten &gt; Chrome &gt; Apps en extensies &gt; Gebruikers en browsers</strong> (controleer onder <em>Instellingen</em> dat privé-apps zijn toegestaan). Selecteer aan de linkerkant onder <strong>Organisatie-eenheden</strong> de map van de leerkrachten (bijvoorbeeld <em>Leerkrachten</em>). Klik rechtsonder op het gele plusje (<strong>Toevoegen via ID</strong>), plak de <strong>Extensie-ID</strong> uit Stap 3 en zet het installatiebeleid op <strong>Installatie afdwingen</strong> (of <em>Installatie toestaan</em>). Klik rechtsboven op <strong>Opslaan</strong>. Het kan enkele minuten duren (of een herstart van Chrome vragen) voordat de extensie zichtbaar wordt zodra leerkrachten zijn aangemeld met hun schoolaccount en Smartschool Skore openen.</p>
     </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleFaq(this)">Ik ben een leerkracht, geen Google beheerder.</div>
+    <div class="faq-answer">
+      <p><strong>Je hebt de hulp van de Google-beheerder van jouw school nodig om deze Chrome extensie te gebruiken.</strong> Om opdrachten en cijfers veilig uit Google Classroom te mogen uitlezen, vereist Google Workspace for Education een eenmalige technische koppeling en goedkeuring op schoolniveau. Bovendien is handmatige installatie van extensies op schoolaccounts meestal geblokkeerd.</p>
+          <p>Wil je de extensie graag gebruiken? Bezorg de link naar deze pagina dan aan je ICT- of Google-beheerder. De beheerder vindt dan de benodigde bestanden en een stappenplan om de extensie centraal voor jouw school klaar te zetten.</p>
+    </div>
+  </div>
+</section>
+
   </article>
 
   <script>
+  function copyChromeUrl(btn) {
+    navigator.clipboard.writeText("chrome://extensions/").then(() => {
+      const originalText = btn.innerText;
+      btn.innerText = "Gekopieerd! ✓";
+      btn.style.color = "#86BC25";
+      setTimeout(() => {
+        btn.innerText = originalText;
+        btn.style.color = "";
+      }, 2000);
+    });
+  }
+
     function togglePanel() {
       document.querySelector('.panel').classList.toggle('open');
       document.querySelector('.open-button').classList.toggle('open');
@@ -378,12 +628,30 @@
       item.classList.toggle('open');
     }
 
-    // Sluit het zijpaneel wanneer de Escape-toets wordt ingedrukt
-    document.addEventListener('keydown', function(event) {
-      if (event.key === 'Escape') {
-        closePanel();
-      }
-    });
+    // Sluit het zijpaneel of de vergrote screenshot wanneer de Escape-toets wordt ingedrukt
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') {
+    closePanel();
+    closeScreenshotOverlay();
+  }
+});
+
+    function openScreenshotOverlay(src) {
+  const overlay = document.getElementById('screenshot-overlay');
+  const overlayImg = document.getElementById('screenshot-overlay-img');
+  if (overlay && overlayImg) {
+    overlayImg.src = src;
+    overlay.classList.add('open');
+  }
+}
+
+function closeScreenshotOverlay() {
+  const overlay = document.getElementById('screenshot-overlay');
+  if (overlay) {
+    overlay.classList.remove('open');
+  }
+}
+
   </script>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -410,6 +678,10 @@
       }
     });
   </script>
+
+  <div id="screenshot-overlay" class="screenshot-overlay" onclick="closeScreenshotOverlay()">
+  <img id="screenshot-overlay-img" src="" alt="Vergrote weergave van Classroom to Skore">
+</div>
 
 </body>
 </html>
